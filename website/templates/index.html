@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+    <title>Alzumurud</title>
+</head>
+<body>
+    
+  <div class="container-fluid" style="padding-top: 50px;">
+
+    <nav id="top_bar" class="navbar fixed-top d-flex justify-content-between align-items-center px-3">
+      <i class="fa-solid fa-list" style="color: var(--icon);"></i>
+      <img src="{{ url_for('static', filename='nav_logo.png') }}" alt="Alzumurud" class="img-fluid" style="height: 35px;">
+      <i class="fa-solid fa-house" style="color: var(--icon);"></i>
+    </nav>
+
+    <p id="intro_p">
+        مرحبًا بكم في الزمـــــرد للرخــــــــام — حيث يلتقي الجمال الطبيعي مع روعة التصميم.<br>
+        ١٥ عامًا من الخبرة تؤهلنا لنمنح منزلكم لمسة فريدة من الفخامة والتميّز، مع التزامنا بتقديم أفضل خامات الرخام، الكرانيت، المرمر، والبورسلين.
+    </p>
+
+
+  
+    <div class="mx-auto" style="max-width: 480px;">
+
+        <!-- Card 1 -->
+        <a href="#" class="d-block position-relative" style="margin-top: 30px;">
+          <img src="{{ url_for('static', filename='marbles_prev.png') }}" alt="منتجاتنا" class="img-fluid w-100" style="border-radius: 12px;">
+          <h3 id ="card_text">منتجاتنا</h3>
+        </a>
+
+    <!-- Card 2 -->
+    <a href="#" class="d-block position-relative" style="margin-top: 30px;">
+      <img src="{{ url_for('static', filename='scene_prev.png') }}" alt="مشاريعنا" class="img-fluid w-100" style="border-radius: 12px;">
+      <h3 id ="card_text">مشاريعنا</h3>
+    </a>
+
+  </div>
+</div>
+
+
+
+
+
+  
+        
+
+
+
+
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
