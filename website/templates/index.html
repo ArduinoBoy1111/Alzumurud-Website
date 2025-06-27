@@ -13,17 +13,19 @@
 </head>
 <body>
 
-    <div class="container-fluid" style="padding-top: 50px; position: relative;">
+    <div class="container-fluid" style="padding-top: 50px; position: relative;" >
 
   <!-- Fixed Navbar -->
   <nav id="top_bar" class="navbar fixed-top d-flex justify-content-between align-items-center px-3">
     <i class="fa-solid fa-list hover-effect" style="color: var(--icon);"></i>
     <img src="{{ url_for('static', filename='nav_logo.png') }}" alt="Alzumurud" class="img-fluid" style="height: 35px;">
-    <i class="fa-solid fa-house hover-effect" style="color: var(--icon);"></i>
+    <a href="/" class="hover-effect">
+           <i class="fa-solid fa-house" style="color: var(--icon);"></i>
+         </a>
   </nav>
 
   <!-- Centered Content Block -->
-  <div class="mx-auto" style="max-width: 480px; position: relative; z-index: 1;">
+  <div class="mx-auto" style="max-width: 480px; position: relative; z-index: 1;"onclick="closeSidebar()">
 
     <!-- Wrapper to anchor the watermark to the paragraph -->
     <div style="position: relative;">
@@ -47,7 +49,7 @@
     </div>
 
     <!-- Card 1 -->
-    <a href="###" class="hover-effect d-block position-relative" style="margin-top: 30px;">
+    <a href="/products" class="hover-effect d-block position-relative" style="margin-top: 30px;">
       <img src="{{ url_for('static', filename='marbles_prev.png') }}" alt="منتجاتنا"
         class="img-fluid w-100"
         style="border-radius: 12px; box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);">
@@ -64,16 +66,74 @@
 
   </div>
 
-   <div calss="justify-content-center"style="max-width: 480px;margin: 0 auto;">
-        <p id="new_p">اطلع على احدث منتجاتنا !</p>
-        <div class ="back-banner">
-          {{for item in items}}
-        </div>
-        
-   </div>
+  <div class="justify-content-center"style="max-width: 480px;margin: 0 auto;" onclick="closeSidebar()">
+       <p id="new_p">اطلع على احدث منتجاتنا !</p>
+       <div class="back-banner-yellow d-flex justify-content-evenly flex-wrap">
+         {% for item in new_items %}
+  
+             <div>
+               <img src="{{item.image}}"style="height : 160px;margin-top : 4px;margin-bottom : 8px"class="item_img">
+               <div class="d-flex justify-content-between">
+                 <h4>{{item.name}}</h4>
+                 <h4 style="margin-top : 3px;"></h4>
+               </div>
+               <h6 style="color: rgb(90, 89, 89);">{{item.color}}</h6>
+             </div>
+  
+         {% endfor %}
+       </div>
+  
+       
+  </div>
+
+  <div class="justify-content-center"style="max-width: 480px;margin: 0 auto;" onclick="closeSidebar()">
+       <p id="sale_p">اطلع على احدث الخصومات !</p>
+       <div class="back-banner-red d-flex justify-content-evenly flex-wrap">
+         {% for item in onsale_items %}
+  
+             <div>
+               <img src="{{item.image}}"style="height : 160px;margin-top : 4px;margin-bottom : 8px"class="item_img">
+               <div class="d-flex justify-content-between">
+                 <h4>{{item.name}}</h4>
+                 <h4 style="margin-top : 3px;"></h4>
+               </div>
+               <h6 style="color: rgb(90, 89, 89);">{{item.color}}</h6>
+             </div>
+  
+         {% endfor %}
+       </div>
+  
+       
+  </div>
 </div>
 
-   
+   <div id="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()" style="
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 28px;
+    color: var(--icon);
+    text-decoration: none;
+  ">&times;</a>
+  <ul style="list-style: none; padding: 0 20px; font-size: 18px;">
+    <li><a href="/products" class="nav-link">منتجاتنا</a></li>
+    <li><a href="###" class="nav-link">مشاريعنا</a></li>
+    <li><a href="####" class="nav-link">اتصل بنا</a></li>
+  </ul>
+   </div>
+   <script>
+  function openSidebar() {
+    document.getElementById("sidebar").style.width = "40%";
+  }
+
+  function closeSidebar() {
+    document.getElementById("sidebar").style.width = "0";
+  }
+
+  document.querySelector('.fa-list').addEventListener('click', openSidebar);
+</script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 </html>

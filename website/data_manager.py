@@ -7,8 +7,9 @@ class item:
         dimensions: str,
         origin: str,
         image: str,
-        new: bool,
-        onsale: bool,
+        new: bool = False,
+        onsale: bool = False,
+        price: int = 0,
     ):
         self.name = name
         self.item_type = item_type
@@ -18,53 +19,142 @@ class item:
         self.image = image
         self.new = new
         self.onsale = onsale
+        self.price = price
 
     def __str__(self):
-        return f"Item(name={self.name}, type={self.item_type}, color={self.color}, dimensions={self.dimensions}, origin={self.origin}, image={self.image}), new={self.new}, onsale={self.onsale})"
+        return (
+            f"Item(name={self.name}, type={self.item_type}, color={self.color}, "
+            f"dimensions={self.dimensions}, origin={self.origin}, image={self.image}, "
+            f"new={self.new}, onsale={self.onsale}, price={self.price})"
+        )
 
 
 items = [
     item(
-        "polished ceramic",
-        "porcelin",
-        "beige",
+        "سيراميك مصقول",
+        "بورسلين",
+        "بيج",
         "120*60",
-        "egyptian",
-        "static\items_imgs\photo_1_2025-06-20_15-37-19.jpg",
+        "مصري",
+        r"static\items_imgs\photo_1_2025-06-20_15-37-19.jpg",
+        new=False,
+        onsale=False,
+        price=12500,
     ),
     item(
-        "granite classic",
-        "granite",
-        "cream",
+        "جرانيت كلاسيكي",
+        "جرانيت",
+        "كريمي",
         "120*60",
-        "brazilian",
-        "static\items_imgs\photo_2_2025-06-20_15-37-19.jpg",
+        "برازيلي",
+        r"static\items_imgs\photo_2_2025-06-20_15-37-19.jpg",
+        new=False,
+        onsale=True,
+        price=12800,
     ),
     item(
-        "vintage tile",
-        "porcelin",
-        "white",
+        "بلاط عتيق",
+        "بورسلين",
+        "أبيض",
         "120*60",
-        "italian",
-        "static\items_imgs\photo_3_2025-06-20_15-37-19.jpg",
+        "إيطالي",
+        r"static\items_imgs\photo_3_2025-06-20_15-37-19.jpg",
+        new=False,
+        onsale=False,
+        price=12200,
     ),
     item(
-        "glossy ceramic",
-        "ceramic",
-        "grey",
+        "سيراميك لامع",
+        "سيراميك",
+        "رمادي",
         "120*60",
-        "iranian",
-        "static\items_imgs\photo_4_2025-06-20_15-37-19.jpg",
+        "إيراني",
+        r"static\items_imgs\photo_4_2025-06-20_15-37-19.jpg",
+        new=False,
+        onsale=True,
+        price=12750,
     ),
     item(
-        "natural marble",
-        "marble",
-        "brown",
+        "رخام طبيعي",
+        "رخام",
+        "بني",
+        "60*60",
+        "أردني",
+        r"static\items_imgs\s-l1200.jpg",
+        new=False,
+        onsale=True,
+        price=13000,
+    ),
+    item(
+        "رخام طبيعي",
+        "رخام",
+        "بني",
+        "60*60",
+        "أردني",
+        r"static\items_imgs\s-l1200.jpg",
+        new=False,
+        onsale=True,
+        price=13000,
+    ),
+    item(
+        "رخام طبيعي",
+        "رخام",
+        "بني",
         "120*60",
-        "jordanian",
-        "static\items_imgs\photo_5_2025-06-20_15-37-19.jpg",
+        "أردني",
+        r"static\items_imgs\photo_5_2025-06-20_15-37-19.jpg",
+        new=False,
+        onsale=True,
+        price=13000,
     ),
 ]
+
+for i in range(113):
+    items.append(
+        item(
+            (
+                "رخام طبيعي"
+                if i % 5 == 0
+                else (
+                    "سيراميك لامع"
+                    if i % 5 == 1
+                    else (
+                        "بلاط عتيق"
+                        if i % 5 == 2
+                        else "جرانيت كلاسيكي" if i % 5 == 3 else "سيراميك مصقول"
+                    )
+                )
+            ),
+            (
+                "رخام"
+                if i % 4 == 0
+                else "سيراميك" if i % 4 == 1 else "بورسلين" if i % 4 == 2 else "جرانيت"
+            ),
+            "رمادي" if i % 3 == 0 else "أبيض" if i % 3 == 1 else "بيج",
+            "120*60" if i % 2 == 0 else "60*60",
+            (
+                "أردني"
+                if i % 6 == 0
+                else (
+                    "إيراني"
+                    if i % 6 == 1
+                    else (
+                        "إيطالي"
+                        if i % 6 == 2
+                        else (
+                            "مصري"
+                            if i % 6 == 3
+                            else "برازيلي" if i % 6 == 4 else "أردني"
+                        )
+                    )
+                )
+            ),
+            r"static\items_imgs\test.jpg",
+            new=bool((i + 1) % 37 == 0),
+            onsale=((i + 1) % 37 == 0),
+            price=12000 + (i % 10) * 100,
+        )
+    )
 
 
 def filter_items(
