@@ -27,12 +27,8 @@
 
     </div>
 
+    <form method="get" class="container" style="padding-top: 15px; max-width: 600px; border-bottom-color: var(--grey); border-bottom-width: 1px; border-bottom-style:solid; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
 
-    <form method="get" class="container" style="padding-top: 15px; max-width: 600px; border-bottom-color: var(--grey);
-    border-bottom-width: 1px;
-    border-bottom-style:solid;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
-  
   <!-- First Row: Button + Search -->
   <div class="row g-2 align-items-center mt-1">
     <div class="col-auto">
@@ -41,79 +37,122 @@
       </button>
     </div>
     <div class="col">
-      <input type="text" name="name" class="form-control"
-             placeholder="ابحث عن منتج..."
-             style="border-radius: 10px; padding: 10px;">
+      <input type="text" name="name" class="form-control" placeholder="ابحث عن منتج..."
+             value="{{ name or '' }}" style="border-radius: 10px; padding: 10px;">
     </div>
   </div>
 
-  
-   <div class="row g-2 mt-1">
-          <div class="col-3">
-            <label for="type_select" class="form-label">نوع المادة</label>
-            <select name="type" id="type_select" class="form-select" style="border-radius: 10px; padding: 6px;">
-              <option value="بورسلين">بورسلين</option>
-              <option value="مرمر">مرمر</option>
-              <option value="كرانيت">كرانيت</option>
-              <option value="رخام">رخام</option>
-            </select>
-          </div>
-      
-          <div class="col-3">
-            <label for="size_select" class="form-label">القياس</label>
-            <select name="dimensions" id="size_select" class="form-select" style="border-radius: 10px; padding: 6px;">
-              <option value="120*60">120*60</option>
-              <option value="120*120">120*120</option>
-              <option value="60*60">60*60</option>
-              <option value="100*100">100*100</option>
-              <option value="40*40">60*60</option>
-            </select>
-          </div>
-      
-          <div class="col-3">
-            <label for="origin_select" class="form-label">المنشأ</label>
-            <select name="origin" id="origin_select" class="form-select" style="border-radius: 10px; padding: 6px;">
-              <option value="تركي">تركي</option>
-              <option value="ايراني">ايراني</option>
-              <option value="ايطالي">ايطالي</option>
-            </select>
-          </div>
-      
-          <div class="col-3">
-            <label for="color_select" class="form-label">اللون</label>
-            <select name="color" id="color_select" class="form-select" style="border-radius: 10px; padding: 6px;">
-              <option value="بيجي">بيجي</option>
-              <option value="ابيض">ابيض</option>
-              <option value="رمادي">رمادي</option>
-              <option value="بني">بني</option>
-              <option value="اسود">اسود</option>
-            </select>
-          </div>
-        </div>
+  <!-- Filters -->
+  <div class="row g-2 mt-1">
 
-        <div class="row g-2 mt-1 mb-1">
-          <div class="col-5">
-            <label for="price_select" class="form-label">السعر</label>
-            <select name="price" id="price_select" class="form-select" style="border-radius: 10px; padding: 6px;">
-              <option value="none">بدون ترتيب</option>
-              <option value="asc">من الأقل إلى الأعلى</option>
-              <option value="desc">من الأعلى إلى الأقل</option>
-            </select>
-          </div>
-      
-          <div class="col">
-            <div class="mb-3">
-              <label for="onsale" class="form-label">عرض المنتجات المخفّضة فقط:</label>
-              <input type="checkbox" id="onsale" name="onsale" value="true" class="form-check-input d-block mt-2" style="padding:10px; margin-right:5px;">
-            </div>
-          </div>
-        </div>
-
+    <div class="col-3">
+      <label for="type_select" class="form-label">نوع المادة</label>
+      <select name="type" id="type_select" class="form-select" style="border-radius: 10px; padding: 6px;">
+        <option value="any" {% if type == 'any' %}selected{% endif %}>الكل</option>
+        <option value="بورسلين" {% if type == 'بورسلين' %}selected{% endif %}>بورسلين</option>
+        <option value="مرمر" {% if type == 'مرمر' %}selected{% endif %}>مرمر</option>
+        <option value="كرانيت" {% if type == 'كرانيت' %}selected{% endif %}>كرانيت</option>
+        <option value="رخام" {% if type == 'رخام' %}selected{% endif %}>رخام</option>
+      </select>
     </div>
-    
-    </form>
 
-    
+    <div class="col-3">
+      <label for="size_select" class="form-label">القياس</label>
+      <select name="dimensions" id="size_select" class="form-select" style="border-radius: 10px; padding: 6px;">
+        <option value="any" {% if dimensions == 'any' %}selected{% endif %}>الكل</option>
+        <option value="120*60" {% if dimensions == '120*60' %}selected{% endif %}>120*60</option>
+        <option value="120*120" {% if dimensions == '120*120' %}selected{% endif %}>120*120</option>
+        <option value="60*60" {% if dimensions == '60*60' %}selected{% endif %}>60*60</option>
+        <option value="100*100" {% if dimensions == '100*100' %}selected{% endif %}>100*100</option>
+        <option value="40*40" {% if dimensions == '40*40' %}selected{% endif %}>40*40</option>
+      </select>
+    </div>
+
+    <div class="col-3">
+      <label for="origin_select" class="form-label">المنشأ</label>
+      <select name="origin" id="origin_select" class="form-select" style="border-radius: 10px; padding: 6px;">
+        <option value="any" {% if origin == 'any' %}selected{% endif %}>الكل</option>
+        <option value="تركي" {% if origin == 'تركي' %}selected{% endif %}>تركي</option>
+        <option value="ايراني" {% if origin == 'ايراني' %}selected{% endif %}>ايراني</option>
+        <option value="ايطالي" {% if origin == 'ايطالي' %}selected{% endif %}>ايطالي</option>
+      </select>
+    </div>
+
+    <div class="col-3">
+      <label for="color_select" class="form-label">اللون</label>
+      <select name="color" id="color_select" class="form-select" style="border-radius: 10px; padding: 6px;">
+        <option value="any" {% if color == 'any' %}selected{% endif %}>الكل</option>
+        <option value="ابيض" {% if color == 'ابيض' %}selected{% endif %}>ابيض</option>
+        <option value="بيجي" {% if color == 'بيجي' %}selected{% endif %}>بيجي</option>
+        <option value="رمادي" {% if color == 'رمادي' %}selected{% endif %}>رمادي</option>
+        <option value="بني" {% if color == 'بني' %}selected{% endif %}>بني</option>
+        <option value="اسود" {% if color == 'اسود' %}selected{% endif %}>اسود</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row g-2 mt-1 mb-1">
+    <div class="col-5">
+      <label for="price_select" class="form-label">السعر</label>
+      <select name="price" id="price_select" class="form-select" style="border-radius: 10px; padding: 6px;">
+        <option value="none" {% if price == 'none' %}selected{% endif %}>بدون ترتيب</option>
+        <option value="asc" {% if price == 'asc' %}selected{% endif %}>من الأقل إلى الأعلى</option>
+        <option value="desc" {% if price == 'desc' %}selected{% endif %}>من الأعلى إلى الأقل</option>
+      </select>
+    </div>
+
+    <div class="col">
+      <div class="mb-3">
+        <label for="onsale" class="form-label">عرض المنتجات المخفّضة فقط:</label>
+        <input type="checkbox" id="onsale" name="onsale" value="true"
+               class="form-check-input d-block mt-2"
+               {% if onsale == true %}checked{% endif %}
+               style="padding:10px; margin-right:5px;">
+      </div>
+    </div>
+  </div>
+</form>
+
+
+    <div class="justify-content-center"style="max-width: 480px;margin: 0 auto;" onclick="closeSidebar()">
+       <p id="items_p">تم العثور على {{count}} منتج !</p>
+       <div class="back-banner-white d-flex justify-content-evenly flex-wrap">
+         {% for item in filtered_items %}
+  
+            <div class="item_wrapper">
+              <div>
+                <div class="col" style="text-align: center">
+                  <img src="{{item.image}}" style="height: 190px; margin-top: 4px; margin-bottom: 8px;" class="item_img">
+                </div>
+
+              </div>
+
+              <div>
+                <div class="col d-flex justify-content-between mt-1">
+                  <h4>{{item.name}}</h4>
+                  <h5>{{ "{:,}".format(item.price) }} IQD</h4>
+                </div>
+                <div class="col">
+                  <h6 style="color: rgb(90, 89, 89);">{{item.origin}}</h6>
+                </div>
+              </div>
+                        
+      
+              
+              
+                
+                
+
+              
+            </div>
+
+  
+         {% endfor %}
+       </div>
+  
+       
+  </div>
+
 
    <div id="sidebar">
       <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()" style="
