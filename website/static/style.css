@@ -163,7 +163,7 @@ text-align: center;
 }
 
 .item_img{
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.393);
   border-radius: 10px;
 }
 #sidebar{

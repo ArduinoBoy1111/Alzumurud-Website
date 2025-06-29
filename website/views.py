@@ -14,7 +14,7 @@ def home():
 
 @views.route("/products", methods=["GET"])
 def products():
-    name = request.args.get("name")
+    name = request.args.get("name").lower().replace(" ", "")
     type = request.args.get("type")
     dimensions = request.args.get("dimensions")
     origin = request.args.get("origin")
@@ -36,7 +36,7 @@ def products():
 
     if type != None:
         filtered_items = filter_items(
-            items_to_filter, type, color, dimensions, origin, "any", onsale
+            items_to_filter, type, color, dimensions, origin, "any", onsale, name
         )
     else:
         filtered_items = items_to_filter
@@ -53,4 +53,5 @@ def products():
         origin=origin,
         color=color,
         onsale=onsale,
+        price=request.args.get("price"),
     )

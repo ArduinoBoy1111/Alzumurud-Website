@@ -140,7 +140,7 @@ for i in range(113):
             r"static\items_imgs\test.jpg",
             new=bool((i + 1) % 37 == 0),
             onsale=((i + 1) % 37 == 0),
-            price=12000 + (i % 10) * 100,
+            price=12000 + (i % 10) * 1000,
         )
     )
 
@@ -196,6 +196,7 @@ def filter_items(
     origin: str = "any",
     new: str = "any",
     onsale: str = "any",
+    name: str = "",
 ):
     filtered = []
 
@@ -207,6 +208,7 @@ def filter_items(
             and (origin == "any" or item.origin == origin)
             and (new == "any" or item.new == new)
             and (onsale == "any" or item.onsale == onsale)
+            and name in item.name.lower().replace(" ", "")
         ):
             filtered.append(item)
 
