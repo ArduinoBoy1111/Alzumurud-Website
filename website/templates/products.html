@@ -121,15 +121,13 @@
   
             <div class="item_wrapper">
               <div>
-                <div class="col" style="text-align: center">
-                  <img src="{{item.image}}" style="height: 150px; margin-top: 4px; margin-bottom: 8px;" class="item_img">
-
+                <div class="col" style="display: flex ;justify-content: center;align-items: center;">
+                  <img src="{{item.image}}" style="height: 100%; margin-top: 4px; margin-bottom: 8px;" class="item_img">
                 </div>
-
               </div>
 
               <div>
-                <div class="col d-flex justify-content-between mt-1">
+                <div class="col d-flex justify-content-between align-items-center mt-1">
                   <h4>{{item.name}}</h4>
                   <h5>{{ "{:,}".format(item.price) }} IQD</h4>
                 </div>

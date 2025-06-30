@@ -208,7 +208,7 @@ select.form-select {
   
 }
 
- @media (min-width: 768px) {
+ @media (min-width: 900px) {
     .item_img {
       height: 190px !important;
     }
