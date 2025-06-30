@@ -143,7 +143,7 @@ text-align: center;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   padding-top: 30px;
-  
+  gap: 40px;
 
 }
 
@@ -192,10 +192,27 @@ select.form-select {
   background-repeat: no-repeat;
 }
 .item_wrapper{
-  width: 95%;
+  width: 360px;
   /*border-top : 1px solid var(--grey);*/
   border-bottom : 1px solid var(--grey);
   padding: 10px 6px ;
   display: flex;
   flex-direction: column;
+  scale: 100%;
+  transition: 0.2s ease-in-out ;
 }
+
+.item_wrapper:hover{
+  scale: 104%;
+  transition: 0.2s ease-in-out ;
+  
+}
+
+ @media (min-width: 768px) {
+    .item_img {
+      height: 190px !important;
+    }
+    .back-banner-white {
+      gap: 50px;
+    }
+  }

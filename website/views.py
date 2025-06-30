@@ -14,7 +14,7 @@ def home():
 
 @views.route("/products", methods=["GET"])
 def products():
-    name = request.args.get("name").lower().replace(" ", "")
+    name = request.args.get("name", "").lower().replace(" ", "")
     type = request.args.get("type")
     dimensions = request.args.get("dimensions")
     origin = request.args.get("origin")
